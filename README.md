@@ -2,6 +2,10 @@
 
 Minimal session manager for Neovim with a floating UI.
 
+<div align="center">
+    <img src="https://raw.githubusercontent.com/Mathiew82/mynotes.nvim/main/screenshot.png" alt="screenshot" />
+</div>
+
 Phantom lets you manage sessions from a single window:
 
 - List sessions
@@ -14,7 +18,7 @@ One key. One UI.
 
 ## Requirements
 
--   Neovim \>= 0.11.0
+- Neovim \>= 0.11.0
 
 ## Features
 
