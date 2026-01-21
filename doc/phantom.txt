@@ -1,0 +1,178 @@
+*phantom.txt*   Session manager with a minimal floating UI
+
+==============================================================================
+PHANTOM                                                  *phantom*
+
+Phantom is a minimal session manager for Neovim.
+
+It provides a single floating window to:
+
+  • list sessions
+  • load sessions (with buffer wipe)
+  • save the current session
+  • delete sessions
+
+All actions are done from one UI, keeping your workflow simple.
+
+------------------------------------------------------------------------------
+INSTALLATION                                            *phantom-install*
+
+Using lazy.nvim (local plugin):
+
+  {
+    dir = vim.fn.stdpath("config") .. "/lua/plugins/phantom",
+    name = "phantom",
+    lazy = false,
+    config = function()
+      require("phantom").setup()
+    end,
+  }
+
+Or from GitHub:
+
+  {
+    "your-user/phantom.nvim",
+    config = function()
+      require("phantom").setup()
+    end,
+  }
+
+------------------------------------------------------------------------------
+SETUP                                                    *phantom-setup*
+
+  require("phantom").setup({
+    session_dir = vim.fn.stdpath("state") .. "/sessions",
+    notify = true,
+    wipe_on_load = true,
+    keymaps = {
+      list = "<leader>sls",
+    },
+    float = {
+      border = "rounded",
+      width = 60,
+      height = 16,
+      title = " Phantom ",
+    },
+  })
+
+All options are optional.
+
+------------------------------------------------------------------------------
+USAGE                                                    *phantom-usage*
+
+Open Phantom UI:
+
+  <leader>sls
+  :Phantom
+
+------------------------------------------------------------------------------
+KEYS                                                     *phantom-keys*
+
+Inside the floating window:
+
+  <Enter>     Load selected session (wipes buffers first)
+  s           Save current session
+  d           Delete selected session
+  r           Refresh list
+  q / <Esc>   Close window
+
+Cursor movement:
+
+  j / k
+  <Up> / <Down>
+
+The cursor is restricted to session entries only.
+
+------------------------------------------------------------------------------
+SAVING                                                   *phantom-save*
+
+Press "s" to save the current session.
+
+You will be prompted:
+
+  Session name:
+
+Rules:
+
+  • Minimum length: 2 characters
+  • Allowed characters: [A-Za-z0-9_-]
+  • Existing sessions ask for confirmation before overwrite
+
+Examples:
+
+  work
+  feature_a
+  bugfix-123
+
+Invalid examples:
+
+  my session
+  ../hack
+  >foo
+
+------------------------------------------------------------------------------
+LOADING                                                  *phantom-load*
+
+Select a session and press <Enter>.
+
+By default Phantom:
+
+  • wipes all buffers
+  • restores the saved layout
+
+------------------------------------------------------------------------------
+DELETING                                                 *phantom-delete*
+
+Press "d" to delete the selected session.
+
+This removes the session file from disk.
+
+------------------------------------------------------------------------------
+NOTIFICATIONS                                            *phantom-notify*
+
+Phantom uses vim.notify() for feedback.
+
+If you install:
+
+  rcarriga/nvim-notify
+
+notifications will automatically look better.
+
+------------------------------------------------------------------------------
+FILES                                                    *phantom-files*
+
+Sessions are stored in:
+
+  ~/.local/state/nvim/sessions/
+
+Each session is a .vim file created with :mksession.
+
+------------------------------------------------------------------------------
+COMMANDS                                                 *phantom-commands*
+
+  :Phantom
+      Open Phantom UI
+
+------------------------------------------------------------------------------
+TIPS                                                     *phantom-tips*
+
+• Use Phantom to keep different work contexts
+• Ideal for feature branches
+• Combine with git worktrees
+• Keep sessions small (sessionoptions)
+
+Recommended:
+
+  set sessionoptions=buffers,curdir,tabpages,winsize
+
+------------------------------------------------------------------------------
+AUTHOR                                                   *phantom-author*
+
+Your Name Alberto Mateo Alcala
+
+------------------------------------------------------------------------------
+LICENSE                                                  *phantom-license*
+
+MIT
+
+------------------------------------------------------------------------------
