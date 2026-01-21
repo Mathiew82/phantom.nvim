@@ -14,7 +14,7 @@ One key. One UI.
 
 ---
 
-## ✨ Features
+## Features
 
 - Single floating interface
 - Save / load / delete from the same window
@@ -27,9 +27,7 @@ One key. One UI.
 
 ---
 
-## 📦 Installation
-
-### lazy.nvim (local plugin)
+## Installation (Lazy.nvim / LazyVim)
 
 ```lua
 {
