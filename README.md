@@ -33,10 +33,9 @@ One key. One UI.
 
 ```lua
 {
-  dir = vim.fn.stdpath("config") .. "/lua/plugins/phantom",
-  name = "phantom",
-  lazy = false,
+  "Mathiew82/phantom.nvim",
   config = function()
     require("phantom").setup()
   end,
 }
+```
