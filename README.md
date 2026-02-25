@@ -31,23 +31,33 @@ One key. One UI.
 
 ## Installation (Lazy.nvim / LazyVim)
 
+### lazy.nvim
+
 ```lua
 {
   "Mathiew82/phantom.nvim",
+  event = "VeryLazy",
   config = function()
     require("phantom").setup()
   end,
 }
 ```
 
-Then run:
-```
-:Lazy sync
+### packer.nvim
+
+```lua
+use {
+  "Mathiew82/phantom.nvim",
+  config = function()
+    require("phantom").setup()
+  end
+}
 ```
 
-For more information about this plugin, see also:
-```
-:help phantom
+### vim-plug
+
+```vim
+Plug 'Mathiew82/phantom.nvim'
 ```
 
 ## Usage
@@ -125,3 +135,9 @@ require("phantom").setup({
   },
 })
 ```
+
+> [!TIP]
+> For more information about this plugin, see also:
+> ```
+> :help phantom
+> ```
